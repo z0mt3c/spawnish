@@ -47,7 +47,7 @@ lab.test('stderr', function (done) {
     });
 
     exec.on('exit', function (code) {
-        Code.expect(code).to.equal(1);
+        Code.expect(code).not.to.equal(0);
         Code.expect(stderr).to.be.true();
         Code.expect(stdout).to.be.false();
         done();
