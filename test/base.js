@@ -92,7 +92,8 @@ lab.test('message', function (done) {
     var exec = new Exec('node', [path.join(__dirname, './dummy/echo.js')]);
     var message = false;
 
-    exec.on('message', function () {
+    exec.on('message', function (msg) {
+        Code.expect(msg).to.deep.equal({test: 'test'});
         message = true;
     });
 
