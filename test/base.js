@@ -78,8 +78,7 @@ lab.test('error', function (done) {
         error = true;
     });
 
-    exec.on('exit', function (code) {
-        Code.expect(code).to.equal(-2);
+    exec.on('exit', function () {
         Code.expect(stderr).to.be.false();
         Code.expect(stdout).to.be.false();
         Code.expect(error).to.be.true();
