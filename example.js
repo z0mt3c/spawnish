@@ -1,19 +1,22 @@
 var executer = require('./index');
 
-var test = new executer.Base('test', ['-i', '/usr/local/etc/ansible/hosts', '/usr/local/etc/ansible/site.yml']);
+//var test = new executer.Base('test', ['-i', '/usr/local/etc/ansible/hosts', '/usr/local/etc/ansible/site.yml']);
+//var test = new executer.AnsiblePlaybook(['-i', '/usr/local/etc/ansible/hosts', '/usr/local/etc/ansible/site.yml']);
+var test = new executer.Script('echo "test"\necho "meep"\n echo \'{"test":"test"}\' >&3');
 
-var playbook = new executer.AnsiblePlaybook(['-i', '/usr/local/etc/ansible/hosts', '/usr/local/etc/ansible/site.yml']);
-
-playbook.on('std', function(msg) {
-    console.log(msg);
+test.on('stdout', function (msg) {
+    process.stdout.write('[OUT] ' + msg);
+});
+test.on('stderr', function (msg) {
+    process.stderr.write('[ERR] ' + msg);
 });
 
-playbook.on('message', function(msg) {
+test.on('message', function (msg) {
     console.log('[IPC] ' + JSON.stringify(msg));
 });
 
-playbook.on('exit', function(msg) {
+test.on('exit', function (msg) {
     console.log(msg);
 });
 
-playbook.run();
+test.run();
