@@ -32,8 +32,6 @@ def ipc_log(task, data=None, silent=False):
 
 class CallbackModule(object):
     def on_any(self, *args, **kwargs):
-        if len(args) > 0 and len(kwargs) > 0:
-            ipc_log('on_any', {'args': args, 'kwargs': kwargs}, True)
         pass
 
     def runner_on_failed(self, host, result, ignore_errors=False):
