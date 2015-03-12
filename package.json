@@ -4,7 +4,7 @@
   "description": "Yet another process spawn wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test-cov"
   },
   "author": "Timo Behrmann",
   "license": "MIT",
@@ -19,6 +19,17 @@
     "lab": "^5.3.0"
   },
   "engines": {
-    "node" : "~0.12"
-  }
+    "node": "~0.12"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/z0mt3c/spawnish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/z0mt3c/spawnish/issues"
+  },
+  "homepage": "https://github.com/z0mt3c/spawnish"
 }
